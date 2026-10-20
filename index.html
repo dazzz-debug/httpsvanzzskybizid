@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto Siswa - Kelas XII IPA 1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem 2rem 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .search-bar {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 9999px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: #e2e8f0;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            padding: 1.25rem 1rem;
+        }
+
+        .card-info h3 {
+            font-size: 1.15rem;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-info .role {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-info .quote {
+            font-size: 0.875rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #0f172a;
+            color: #94a3b8;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 640px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .grid-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Direktori Siswa XII IPA 1</h1>
+        <p>Kenali Setiap Anggota dan Cerita di Baliknya</p>
+    </header>
+
+    <div class="container">
+        <!-- Fitur Pencarian -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" onkeyup="filterStudents()" placeholder="Cari nama atau jabatan siswa...">
+        </div>
+
+        <!-- Galeri Foto Siswa -->
+        <div class="grid-gallery" id="studentGrid">
+            <!-- Siswa 1 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://via.placeholder.com/300x300?text=Budi+Santoso" alt="Foto Budi Santoso">
+                </div>
+                <div class="card-info">
+                    <h3>Budi Santoso</h3>
+                    <span class="role">Ketua Kelas</span>
+                    <p class="quote">"Selalu melangkah maju meski pelan."</p>
+                </div>
+            </div>
+
+            <!-- Siswa 2 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://via.placeholder.com/300x300?text=Siti+Rahma" alt="Foto Siti Rahma">
+                </div>
+                <div class="card-info">
+                    <h3>Siti Rahma</h3>
+                    <span class="role">Wakil Ketua</span>
+                    <p class="quote">"Kerja keras tidak pernah mengkhianati hasil."</p>
+                </div>
+            </div>
+
+            <!-- Siswa 3 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://via.placeholder.com/300x300?text=Dewi+Lestari" alt="Foto Dewi Lestari">
+                </div>
+                <div class="card-info">
+                    <h3>Dewi Lestari</h3>
+                    <span class="role">Sekretaris</span>
+                    <p class="quote">"Catatan rapi, pikiran jernih."</p>
+                </div>
+            </div>
+
+            <!-- Siswa 4 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://via.placeholder.com/300x300?text=Rian+Pratama" alt="Foto Rian Pratama">
+                </div>
+                <div class="card-info">
+                    <h3>Rian Pratama</h3>
+                    <span class="role">Bendahara</span>
+                    <p class="quote">"Bayar kas tepat waktu demi kedamaian."</p>
+                </div>
+            </div>
+
+            <!-- Siswa 5 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://via.placeholder.com/300x300?text=Andi+Wijaya" alt="Foto Andi Wijaya">
+                </div>
+                <div class="card-info">
+                    <h3>Andi Wijaya</h3>
+                    <span class="role">Anggota</span>
+                    <p class="quote">"Nikmati setiap detik masa SMA."</p>
+                </div>
+            </div>
+
+            <!-- Siswa 6 -->
+            <div class="card">
+                <div class="img-wrapper">
+                    <img src="https://via.placeholder.com/300x300?text=Maya+Putri" alt="Foto Maya Putri">
+                </div>
+                <div class="card-info">
+                    <h3>Maya Putri</h3>
+                    <span class="role">Anggota</span>
+                    <p class="quote">"Belajar dari kesalahan kemarin."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kelas XII IPA 1 - Seluruh Hak Cipta Dilindungi</p>
+    </footer>
+
+    <script>
+        function filterStudents() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const grid = document.getElementById('studentGrid');
+            const cards = grid.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const name = cards[i].getElementsByTagName('h3')[0].innerText;
+                const role = cards[i].getElementsByClassName('role')[0].innerText;
+                if (name.toLowerCase().includes(filter) || role.toLowerCase().includes(filter)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
